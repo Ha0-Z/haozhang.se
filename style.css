@@ -1,0 +1,14 @@
+body {
+    margin: 0;
+}
+header {
+    position: sticky;
+    top: 0;
+    
+}
+
+nav {
+    @media { min-height: 780px;
+        width: auto;
+    }
+}
