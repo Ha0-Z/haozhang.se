@@ -1,14 +1,41 @@
 body {
     margin: 0;
+    font-family: sans-serif;
 }
 header {
     position: sticky;
     top: 0;
     
+    background-color: white;
+    border-bottom: 2px solid black;
+}
+
+#icon-text {
+    display: inline-block;
+}
+
+#icon-text a {
+    color: black;
+    text-decoration: none;
 }
 
 nav {
-    @media { min-height: 780px;
-        width: auto;
-    }
+    display: inline-block;
+}
+
+nav li {
+    display: inline;
+}
+nav a {
+    text-decoration: none;
+}
+
+#selfie {
+    border: 2px black solid;
+    border-radius: 100%;
+}
+
+footer {
+    background-color: #999999;
+    color: white;
 }
