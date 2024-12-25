@@ -1,33 +1,77 @@
 body {
     margin: 0;
     font-family: sans-serif;
+    height: 100%;
 }
 header {
     position: sticky;
     top: 0;
+    z-index: 1;
     
     background-color: white;
     border-bottom: 2px solid black;
 }
 
+#topbar-container {
+    margin: 0px 200px 0px 200px;
+    overflow:auto;
+    height: 60px;
+}
+
+
 #icon-text {
-    display: inline-block;
+    float: left;
+    margin-top: 15px;
 }
 
 #icon-text a {
     color: black;
     text-decoration: none;
+    font-size: x-large;
 }
 
 nav {
-    display: inline-block;
+    float: right;
 }
 
 nav li {
     display: inline;
+    margin-right: 20px;
 }
 nav a {
     text-decoration: none;
+}
+
+nav a:link {
+    color: black;
+}
+
+nav a:visited {
+    color:black;
+}
+
+nav a:hover {
+    color:gold;
+}
+
+main {
+    /* 60px is the height of the top bar */
+    height: calc(100% - 60px); 
+}
+
+#center-box {
+    margin-left: auto;
+
+    margin-right: auto;
+
+    width: 50%;
+
+    position: relative;
+
+    top: 50%;
+
+    transform: translateY(-50%);
+
 }
 
 #selfie {
@@ -38,4 +82,9 @@ nav a {
 footer {
     background-color: #999999;
     color: white;
+}
+
+footer {
+    background-color: black;
+    height: 400px;
 }
