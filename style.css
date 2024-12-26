@@ -54,6 +54,10 @@ nav a:hover {
     color:gold;
 }
 
+#nav-current {
+    border-bottom: black 2px solid;
+}
+
 main {
     /* 60px is the height of the top bar */
     height: calc(100% - 60px); 
