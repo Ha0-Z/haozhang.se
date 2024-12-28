@@ -60,7 +60,7 @@ nav a:hover {
 
 main {
     /* 60px is the height of the top bar */
-    min-height: calc(100% - 60px); 
+    height: calc(100% - 60px); 
 }
 
 #center-box {
