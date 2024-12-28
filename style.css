@@ -60,7 +60,7 @@ nav a:hover {
 
 main {
     /* 60px is the height of the top bar */
-    height: calc(100% - 60px); 
+    min-height: calc(100% - 60px); 
 }
 
 #center-box {
@@ -93,8 +93,9 @@ main {
     box-shadow: 0px 0px 5px 0px rgba(0,0,0,0.75);
   
     width: 600px;
-    margin: auto;
+    margin: 30px auto;
     padding: 20px;
+
 }
 
 .blog-item:hover {
