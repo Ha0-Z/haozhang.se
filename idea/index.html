@@ -14,18 +14,66 @@
     <script src="https://cdn.jsdelivr.net/npm/@event-calendar/build@3.7.2/event-calendar.min.js"></script>
 
     <style>
+        .idea-container {
+            display: flex;
+            background-color: lightgray;
+            flex-direction: row;
+            flex-wrap: wrap;
+            justify-content: start;
+            align-items: flex-start;
+            padding: 10px;
+        }
+
+        .idea {
+            background-color: white;
+            padding: 15px;
+            border: 1px solid black;
+            width: 200px;
+            height: 150px;
+            margin: 5px;
+
+            user-select: none;
+        }
+
+        .idea h4 {
+            margin: 0px;
+        }
+        .idea:hover {
+            cursor: pointer;
+        }
+        #div-overlay {
+            display: none;
+
+            width: 100%;
+            height: 100vh;
+            z-index: 1;
+            background-color: #66666666;
+        
+            position: absolute;
+        
+            top: 60px;
+            left: 0;
+        }
+        #idea-form * {
+            margin: 5px;
+        }
+
+        #div-overlay div {
+            border:1px solid black;
+            background-color: white;
+            padding: 20px;
+
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 300px;
+            height: 200px;
+        }
         main {
             height: auto;
         }
-        #new-event {
-            padding: 20px;
-            background: white;
-            border:solid black 1px;
-            display: none;
-            position: absolute;
-            top: 100px;
-            right: 100px;
-        }
+
     </style>
 
 </head>
@@ -34,12 +82,14 @@
     <header>
         <div id="topbar-container">
             <div id="icon-text">
-                <a href="www.haozhang.se">Hao Zhang</a>
-                    
-                    
-                    
-            </div>  
-            <nav>
+                <a href="/">Hao Zhang</a>
+            </div>
+            <button id="hamburger-btn" aria-label="Toggle menu">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+            <nav id="main-nav">
                 <ul>
                     <li><a href="/projects.html">Projects</a></li>
                     <li><a href="/about.html">About</a></li>
@@ -55,29 +105,59 @@
     </header>
 
     <main>
-        <div id="ec">
+        <div id="new-idea" class="idea" onclick="tuggleOverlay('div-overlay')">
+            <h4>Create new idea</h3>
+            <p>Click to create new idea.</p>
+        </div>
+        <h2>Undoing Ideas</h2>
+        <div class="idea-container" id="ideas-undone">
+            <div id="new-idea" class="idea" onclick="tuggleOverlay('div-overlay')">
+                <h4>Create new idea</h3>
+                <p>Click to create new idea.</p>
+            </div>
+
 
         </div>
-        <div id="new-event">
-            <label for="event-title">Start Date</label>
-            <input type="datetime-local" id="event-start" value="2017-06-01T08:30" name="start">
-            <br>
+        <hr>
+        <h2>Taken Ideas</h2>
 
-            <label for="event-title">End Date</label>
-            <input type="datetime-local" id="event-end" value="2017-06-01T08:30" name="start">
-
-
+        <div class="idea-container" id="ideas-taken">
+            <div class="idea" onclick="readIdea(1)">
+                <h4>Example</h3>
+                <p>This is an example.</p>
+            </div>
         </div>
 
     </main>
+    
+
+
+    <div id="div-overlay" onclick="tuggleOverlay('div-overlay')">
+
+        <div id="idea-form" onclick="overlayToggle = true" value="1">
+            <label for="">Title:</label>
+            <br>
+            <input type="text" name="" id="form-title" maxlength="50" placeholder="Browser test">
+            <br>
+            <label for="">Description: </label>
+            <br>
+            <textarea name="" id="form-description" maxlength="200" placeholder=""></textarea>
+            <br>
+            <label for="">priority</label>
+            <input type="number" name="" id="form-priority" value="0">
+            <br>
+            <button onclick="createNewIdea()">Sumbit</button>
+            <button onclick="tuggleOverlay('div-overlay')">Close</button>
+        </div>
+    </div>
+
     
     <footer>
 
         
     </footer>
-
-    <script src="library.js"></script>
-    <script src="hcalendar.js"></script>
+    <script src="/src/code.js"></script>
+    <script src="idea.js"></script>
 
 </body>
 </html>
