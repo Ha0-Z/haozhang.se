@@ -1,0 +1,82 @@
+<!DOCTYPE html lang="en">
+<html>
+<head>
+
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <meta name="description" content="Welcome to HCalendar!">
+
+    <title>HCalendar</title>
+
+    <link rel="icon" type="image/x-icon" href="/src/favicon.ico">
+    <link rel="stylesheet" href="style.css">
+
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@event-calendar/build@3.7.2/event-calendar.min.css">
+    <script src="https://cdn.jsdelivr.net/npm/@event-calendar/build@3.7.2/event-calendar.min.js"></script>
+
+    <style>
+        main {
+            height: auto;
+        }
+        #new-event {
+            padding: 20px;
+            background: white;
+            border:solid black 1px;
+            display: none;
+            position: absolute;
+            top: 100px;
+            right: 100px;
+        }
+    </style>
+
+</head>
+    
+<body>
+    <header>
+        <div id="topbar-container">
+            <div id="icon-text">
+                <a href="www.haozhang.se">Hao Zhang</a>
+                    
+                    
+                    
+            </div>  
+            <nav>
+                <ul>
+                    <li><a href="www.haozhang.se/projects.html">Projects</a></li>
+                    <li><a href="www.haozhang.se/about.html">About</a></li>
+                    <li><a href="www.haozhang.se/blog.html">Blog</a></li>
+                    <li><a href="www.haozhang.se/contact.html">Contact</a></li>
+                    <li><a href="https://webmail.simply.com/?_task=mail&_mbox=INBOX"><img src="/src/email-svgrepo-com.svg" alt="Email" width="20px" height="20px"></a></li>
+                    <li><a href="/"><img src="/src/Googlecalendar.svg" alt="HCalendar" width="20px" height="20px"></a></li>
+                </ul>
+            </nav> 
+        </div>
+
+    </header>
+
+    <main>
+        <div id="ec">
+
+        </div>
+        <div id="new-event">
+            <label for="event-title">Start Date</label>
+            <input type="datetime-local" id="event-start" value="2017-06-01T08:30" name="start">
+            <br>
+
+            <label for="event-title">End Date</label>
+            <input type="datetime-local" id="event-end" value="2017-06-01T08:30" name="start">
+
+
+        </div>
+
+    </main>
+    
+    <footer>
+
+        
+    </footer>
+
+    <script src="library.js"></script>
+    <script src="hcalendar.js"></script>
+
+</body>
+</html>
