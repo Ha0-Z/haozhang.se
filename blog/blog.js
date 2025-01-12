@@ -96,7 +96,7 @@ var etst1;
 
 
 function loadBlogText(id) {
-    var url = "/blogs/" + id + ".md";
+    var url = "/blog/" + id + ".md";
     
     // Check if the blog content has already been fetched
     if (fetchedBlogs[url]) {
