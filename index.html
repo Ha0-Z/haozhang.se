@@ -2,6 +2,8 @@
 <html>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
     <meta name="description" content="Welcome to Hao's website!">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
 
     <title>Hao's homepage</title>
 
@@ -12,11 +14,13 @@
         <div id="topbar-container">
             <div id="icon-text">
                 <a href="/" id="nav-current">Hao Zhang</a>
-                    
-                    
-                    
-            </div>  
-            <nav>
+            </div>
+            <button id="hamburger-btn" aria-label="Toggle menu">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+            <nav id="main-nav">
                 <ul>
                     <li><a href="/projects.html">Projects</a></li>
                     <li><a href="/about.html">About</a></li>
@@ -26,9 +30,10 @@
                     <li><a href="https://webmail.simply.com/?_task=mail&_mbox=INBOX"><img src="/src/email-svgrepo-com.svg" alt="Email" width="20px" height="20px"></a></li>
                     <li><a href="/hcalendar/"><img src="/src/Googlecalendar.svg" alt="HCalendar" width="20px" height="20px"></a></li>
                 </ul>
-            </nav> 
+            </nav>
         </div>
     </header>
+    
 
     <main>
         <div id="center-box">
@@ -48,7 +53,7 @@
     
 
     <script src="library.js"></script>
-    <script src="code.js"></script>
+    <script src="/src/code.js"></script>
 
 </body>
 </html>

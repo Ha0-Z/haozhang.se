@@ -4,6 +4,7 @@
 
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
     <meta name="description" content="Welcome to HCalendar!">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
     <title>HCalendar</title>
 
@@ -34,12 +35,14 @@
     <header>
         <div id="topbar-container">
             <div id="icon-text">
-                <a href="www.haozhang.se">Hao Zhang</a>
-                    
-                    
-                    
-            </div>  
-            <nav>
+                <a href="/">Hao Zhang</a>
+            </div>
+            <button id="hamburger-btn" aria-label="Toggle menu">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+            <nav id="main-nav">
                 <ul>
                     <li><a href="/projects.html">Projects</a></li>
                     <li><a href="/about.html">About</a></li>
@@ -75,7 +78,7 @@
 
         
     </footer>
-
+    <script src="/src/code.js"></script>
     <script src="library.js"></script>
     <script src="hcalendar.js"></script>
 
