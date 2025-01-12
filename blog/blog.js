@@ -1,4 +1,4 @@
-const blogUrl = "/blogs/blog-list.json"
+const blogUrl = "/blog/blog-list.json"
 let blogList = {};
 
 // Global object to store fetched blog content
