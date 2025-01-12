@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tasks Viewer</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+        }
+
+        .task-container {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 16px;
+            padding: 16px;
+        }
+
+        .task {
+            border: 1px solid #ccc;
+            border-radius: 8px;
+            padding: 16px;
+            width: 300px;
+            cursor: pointer;
+            background-color: #f9f9f9;
+        }
+
+        .task:hover {
+            background-color: #e0f7fa;
+        }
+
+        .overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.7);
+            display: none;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .overlay-content {
+            background: white;
+            padding: 20px;
+            border-radius: 8px;
+            max-width: 500px;
+            text-align: center;
+        }
+
+        .close-btn {
+            margin-top: 10px;
+            padding: 10px 20px;
+            background-color: #ff5252;
+            color: white;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+
+        .close-btn:hover {
+            background-color: #ff1744;
+        }
+    </style>
+</head>
+<body>
+    <div>
+        <div>
+            <h3>Fetch tool</h3>
+            <form id="fetch-tool" onsubmit="sendRequest(event)">
+                <select name="table" id="">
+                    <option value="idea">idea</option>
+                    <option value="evaluation">evaluation</option>
+                    <option value="stage">stage</option>
+                    <option value="task">task</option>
+                    <option value="sub_task">sub_task</option>
+                    <option value="alarm">alarm</option>
+                    <option value="event">event</option>
+                </select>
+                <label for=""></label>
+                <input type="radio" name="type" id="" value="id"> ID
+                <input type="radio" name="type" id="" value="week"> Week
+                <input type="radio" name="type" id="" value="all"> All
+                <input type="text" name="id" placeholder="Enter ID">
+                <button type="submit">Fetch</button>
+            </form>
+        </div>
+        <div id="formOutput"></div>
+    </div>
+   
+    <div class="task-container" id="taskContainer"></div>
+
+    <div class="overlay" id="overlay">
+        <div class="overlay-content">
+            <h2 id="taskTitle"></h2>
+            <p id="taskDescription"></p>
+            <button class="close-btn" id="closeOverlay">Close</button>
+        </div>
+    </div>
+
+    <script>
+        // Fetch tasks from the Flask service
+        async function fetchTasks(api,test) {
+            await fetch(api)
+            .then(res => res.json())
+            .then(data => {
+                console.log(data);
+                test(data);
+                return data;
+             })
+
+        }
+
+        // Render tasks in the container
+        function renderTasks(tasks) {
+            const container = document.getElementById('taskContainer');
+            if (false){
+                tasks.forEach(task => {
+                    const taskDiv = document.createElement('div');
+                    taskDiv.className = 'task';
+                    taskDiv.innerHTML = `<h3>${task.title}</h3><p>${task.description}...</p>`;
+                    taskDiv.addEventListener('click', () => showOverlay(task));
+                    container.appendChild(taskDiv);
+                });
+            } else {
+                const taskDiv = document.createElement('div');
+                taskDiv.className = 'task';
+                taskDiv.innerHTML = `<h3>${tasks.title}</h3><p>${tasks.description}...</p>`;
+                taskDiv.addEventListener('click', () => showOverlay(tasks));
+                container.appendChild(taskDiv);
+            }
+            
+        }
+
+        // Show overlay with task details
+        function showOverlay(task) {
+            const overlay = document.getElementById('overlay');
+            document.getElementById('taskTitle').textContent = task.title;
+            document.getElementById('taskDescription').textContent = task.description;
+            overlay.style.display = 'flex';
+        }
+
+        // Close overlay
+        document.getElementById('closeOverlay').addEventListener('click', () => {
+            document.getElementById('overlay').style.display = 'none';
+        });
+
+        // Fetch tasks on page load
+        fetchTasks('api/request-fetch?table=task&type=id&id=1',renderTasks);
+
+        function sendRequest(event) {
+            event.preventDefault();
+            const form = document.getElementById('fetch-tool');
+            const table = form.table.value;
+            const type = form.type.value;
+            const id = form.id.value;
+            const url = `api/request-fetch?table=${table}&type=${type}&id=${id}`;
+
+            fetchTasks(url,displayInDiv);
+        }
+
+        function displayInDiv (value) {
+            console.log(value);
+            document.getElementById('formOutput').innerHTML = JSON.stringify(value);
+        }
+
+        
+    </script>
+</body>
+</html>
